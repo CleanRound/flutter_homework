@@ -82,11 +82,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-void main() {
-  runApp(const MaterialApp(
-    title: 'My Flutter Homework',
-    debugShowCheckedModeBanner: false,
-    home: HomeScreen(),
-  ));
-}
