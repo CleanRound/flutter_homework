@@ -1,73 +1,52 @@
-// ignore_for_file: library_private_types_in_public_api, duplicate_ignore
-
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  final String name;
-  final int age;
-  final List<String> likes;
-
-  const HomeScreen({
-    Key? key,
-    this.name = 'Oleg',
-    this.age = 15,
-    this.likes = const [
-      'Playing computer games',
-      'Playing the guitar',
-      'Listening to hard-rock music',
-      'Exploring new technologies',
-    ],
-  }) : super(key: key);
+class SkillsScreen extends StatelessWidget {
+  const SkillsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Bio'),
-        leading: const Icon(Icons.home),
+        title: const Text('Skills'),
+        leading: const Icon(Icons.code),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Hello, I\'m $name!',
-              style: const TextStyle(
+              'Skills',
+              style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
-              'Age: $age',
-              style: const TextStyle(
+              'Fluent in English',
+              style: TextStyle(
                 fontSize: 18,
                 fontStyle: FontStyle.italic,
               ),
             ),
-            const SizedBox(height: 24),
-            const Text(
-              'Things I like:',
+            Text(
+              'Knowledge in assembling computers and computers in general',
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
               ),
             ),
-            const SizedBox(height: 8),
-            Column(
-              children: likes
-                  .map(
-                    (like) => ListTile(
-                      leading: const Icon(Icons.favorite),
-                      title: Text(like),
-                    ),
-                  )
-                  .toList(),
+            Text(
+              'Ability to control emotions when necessary',
+              style: TextStyle(
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
+              ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: SizedBox(
+     bottomNavigationBar: SizedBox(
         height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -75,8 +54,10 @@ class HomeScreen extends StatelessWidget {
             BottomButton(
               label: 'Main',
               icon: Icons.home,
-              onPressed: () {},
-              isActive: true,
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+              },
+              isActive: false,
             ),
             BottomButton(
               label: 'Education',
@@ -89,10 +70,8 @@ class HomeScreen extends StatelessWidget {
             BottomButton(
               label: 'Skills',
               icon: Icons.code,
-              onPressed: () {
-                Navigator.pushNamed(context, '/skills');
-              },
-              isActive: false,
+              onPressed: () {},
+              isActive: true,
             ),
           ],
         ),
@@ -116,7 +95,7 @@ class BottomButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-    // ignore: library_private_types_in_public_api
+  // ignore: library_private_types_in_public_api
   _BottomButtonState get createState => _BottomButtonState();
 }
 
